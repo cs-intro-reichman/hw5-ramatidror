@@ -10,7 +10,7 @@ public class MyString {
         System.out.println(spacedString(hello));
         System.out.println(subsetOf("heltlo", "hello"));
         System.out.println(randomStringOfLetters(100));
-        System.out.println(remove("meet", "committee"));
+        System.out.println(remove("committee", "meet"));
         System.out.println(removeCharOnce("meet", 'e'));
         System.out.println(insertRandomly('s',"cat"));
 
@@ -72,10 +72,15 @@ public class MyString {
         String strWithSpaces = "";
 
         for (int i = 0; i < str.length() - 1; i++) {
+            strWithSpaces += ' ';
             strWithSpaces += str.charAt(i);
+        }
+        if (str.length() > 0) {
+            strWithSpaces += ' ';
+            strWithSpaces += str.charAt(str.length() - 1);
+        } else {
             strWithSpaces += ' ';
         }
-        strWithSpaces += str.charAt(str.length() - 1);
         return strWithSpaces;
     }
 
@@ -139,21 +144,20 @@ public class MyString {
 
     public static String remove(String str1, String str2) {
         String New = "";
-        String str1Temp = str1;
+        String str2Temp =  str2;
         boolean contains = false;
 
-        for (int i = 0; i < str2.length(); i++) {
+        for (int i = 0; i < str1.length(); i++) {
             contains = false;
-            for (int j = 0; j < str1Temp.length(); j++) {
-                if (str2.charAt(i) == str1Temp.charAt(j)) {
+            for (int j = 0; j < str2Temp.length(); j++) {
+                if (str1.charAt(i) == str2Temp.charAt(j)) {
                     contains = true;
-                    str1Temp = removeCharOnce(str1Temp, str1Temp.charAt(j));
-                    System.out.println(str1Temp);
+                    str2Temp = removeCharOnce(str2Temp, str2Temp.charAt(j));
                     break;
                 }
             }
             if (contains == false) {
-                New += str2.charAt(i);
+                New += str1.charAt(i);
             }
         }
         return New;
