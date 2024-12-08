@@ -77,7 +77,6 @@ public class MyString {
         }
         if (str.length() > 0) {
             strWithSpaces += str.charAt(str.length() - 1);
-            strWithSpaces += ' ';
         }
         return strWithSpaces;
     }
